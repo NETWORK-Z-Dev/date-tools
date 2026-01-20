@@ -1,0 +1,19 @@
+{
+  "name": "@hackthedev/datetools",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/NETWORK-Z-Dev/date-tools#readme",
+  "bugs": {
+    "url": "https://github.com/NETWORK-Z-Dev/date-tools/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NETWORK-Z-Dev/date-tools.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
