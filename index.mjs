@@ -25,12 +25,27 @@ export default class DateTools {
         const remainingTime = untilTimestamp - Date.now();
         if (remainingTime <= 0) return "Expired";
 
-        const seconds = Math.floor(remainingTime / 1000) % 60;
-        const minutes = Math.floor(remainingTime / (1000 * 60)) % 60;
-        const hours = Math.floor(remainingTime / (1000 * 60 * 60)) % 24;
-        const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+        let secondsTotal = Math.floor(remainingTime / 1000);
 
-        return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        const years = Math.floor(secondsTotal / (60 * 60 * 24 * 365));
+        secondsTotal %= 60 * 60 * 24 * 365;
+
+        const days = Math.floor(secondsTotal / (60 * 60 * 24));
+        secondsTotal %= 60 * 60 * 24;
+
+        const hours = Math.floor(secondsTotal / (60 * 60));
+        secondsTotal %= 60 * 60;
+
+        const minutes = Math.floor(secondsTotal / 60);
+        const seconds = secondsTotal % 60;
+
+        return [
+            years ? `${years}y` : null,
+            days ? `${days}d` : null,
+            hours ? `${hours}h` : null,
+            minutes ? `${minutes}m` : null,
+            seconds ? `${seconds}s` : null
+        ].filter(Boolean).join(" ");
     }
 
     static getDateFromOffset(offset, customDate = null) {
