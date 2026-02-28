@@ -33,7 +33,7 @@ export default class DateTools {
         return `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    static getDateFromOffset(offset) {
+    static getDateFromOffset(offset, customDate = null) {
         if(!offset) throw new Error("No offset provided. Examples: -1 day, +2hours, ...");
 
         const units = {
@@ -63,7 +63,7 @@ export default class DateTools {
             throw new Error("Invalid offset format. Use '<number> <unit>' (e.g., '-1 day', '+2 hours').");
         }
 
-        const now = new Date();
+        const now =  customDate ? customDate : new Date();
 
         if (units[unit] === "months") {
             now.setMonth(now.getMonth() + amount);
